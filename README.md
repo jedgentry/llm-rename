@@ -1,6 +1,8 @@
 # LLM-Rename VS Code Extension
 
 ## Overview
+This is still wip pending integration and prompt testing.
+
 LLM-Rename is a Visual Studio Code extension designed to provide renaming suggestions for symbols in your code by leveraging a language model. The extension analyzes your code context to suggest names that follow best practices.
 
 ## Features
