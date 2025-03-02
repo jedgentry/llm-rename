@@ -1,0 +1,75 @@
+{
+  "name": "llm-rename",
+  "displayName": "llm-rename",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:llm-rename.helloWorld"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "llm-rename.helloWorld",
+        "title": "Rename Symbol with LLM Context"
+      }
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "llm-rename.helloWorld",
+          "when": "view == outline",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "llm-rename.helloWorld",
+          "when": "editorHasDefinitionProvider && editorTextFocus",
+          "group": "1_modification@2"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "LLM Rename Settings",
+      "properties": {
+        "llmRename.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "LLM Endpoint - A URL to post the prompt to an LLM."
+        },
+        "llmRename.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "LLM API Key - The API Key to use with the LLM."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.97.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "eslint": "^9.19.0",
+    "typescript": "^5.7.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
